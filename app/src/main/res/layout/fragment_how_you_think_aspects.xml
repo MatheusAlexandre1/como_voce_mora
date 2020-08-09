@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,11 +15,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-<<<<<<< HEAD
         android:src="@drawable/cost_benefit"
-=======
-        android:src="@drawable/accessibility"
->>>>>>> 6c7d7162605b7c5ba2f4e86233328a2e0749ec79
         app:layout_constraintStart_toEndOf="@id/bt_back"
         app:layout_constraintBottom_toBottomOf="@id/nested"
         app:layout_constraintTop_toTopOf="@id/nested" />
@@ -30,7 +27,6 @@
         android:fadeScrollbars="false"
         android:fillViewport="true"
         android:scrollbars="vertical"
-<<<<<<< HEAD
         app:layout_constraintBottom_toTopOf="@id/progress_bar"
         app:layout_constraintEnd_toEndOf="@id/tv_question"
         app:layout_constraintStart_toEndOf="@id/ivImage"
@@ -90,68 +86,6 @@
 
     </androidx.core.widget.NestedScrollView>
 
-=======
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin"
-        app:layout_constraintBottom_toTopOf="@id/progress_bar"
-        app:layout_constraintEnd_toEndOf="@id/tv_question"
-        app:layout_constraintStart_toEndOf="@id/ivImage"
-        app:layout_constraintTop_toBottomOf="@id/iv_mr_clipboard">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <br.com.como_voce_mora.custom.VolumeHorizontal
-                android:id="@+id/volume1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin"
-                android:layout_marginLeft="@dimen/default_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:textName=" Relação/custo-beneficio" />
-
-            <br.com.como_voce_mora.custom.VolumeHorizontal
-                android:id="@+id/volume2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/volume1"
-                app:textName="Segurança em  relação à rua" />
-
-            <br.com.como_voce_mora.custom.VolumeHorizontal
-                android:id="@+id/volume3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/volume2"
-                app:textName="Privacidade em relação à rua" />
-
-            <br.com.como_voce_mora.custom.VolumeHorizontal
-                android:id="@+id/volume4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/volume3"
-                app:textName="Nivel de convivencia" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> 6c7d7162605b7c5ba2f4e86233328a2e0749ec79
-
-    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

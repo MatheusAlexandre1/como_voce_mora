@@ -80,41 +80,25 @@ public class HabitationHowYouThinkAboutAspectsFragment extends BaseFragment {
         vhAcessibilidade.setListener(position -> {
             anyOptionChecked = true;
             vhAcessibilidade.setInfo(texts.get(position));
-<<<<<<< HEAD
             ivPhoto.setImageResource(R.drawable.cost_benefit);
-=======
-            ivPhoto.setImageResource(R.drawable.custo_beneficio);
->>>>>>> 6c7d7162605b7c5ba2f4e86233328a2e0749ec79
             answerRequests.add(new AnswerRequest(aspectSecurity.getQuestion(), aspectSecurity.getQuestionPartId(), texts.get(position)));
         });
         vhAparencia.setListener(position -> {
             anyOptionChecked = true;
             vhAparencia.setInfo(texts.get(position));
-<<<<<<< HEAD
             ivPhoto.setImageResource(R.drawable.security);
-=======
-            ivPhoto.setImageResource(R.drawable.seguranca);
->>>>>>> 6c7d7162605b7c5ba2f4e86233328a2e0749ec79
             answerRequests.add(new AnswerRequest(aspectStreet.getQuestion(), aspectStreet.getQuestionPartId(), texts.get(position)));
         });
         vhConstrucao.setListener(position -> {
             anyOptionChecked = true;
             vhConstrucao.setInfo(texts.get(position));
-<<<<<<< HEAD
             ivPhoto.setImageResource(R.drawable.street_privacy);
-=======
-            ivPhoto.setImageResource(R.drawable.privacidade);
->>>>>>> 6c7d7162605b7c5ba2f4e86233328a2e0749ec79
             answerRequests.add(new AnswerRequest(aspectConvivence.getQuestion(), aspectConvivence.getQuestionPartId(), texts.get(position)));
         });
         vhLimpeza.setListener(position -> {
             anyOptionChecked = true;
             vhLimpeza.setInfo(texts.get(position));
-<<<<<<< HEAD
             ivPhoto.setImageResource(R.drawable.coexistence);
-=======
-            ivPhoto.setImageResource(R.drawable.convivencia);
->>>>>>> 6c7d7162605b7c5ba2f4e86233328a2e0749ec79
             answerRequests.add(new AnswerRequest(aspectPrivece.getQuestion(), aspectPrivece.getQuestionPartId(), texts.get(position)));
         });
 
