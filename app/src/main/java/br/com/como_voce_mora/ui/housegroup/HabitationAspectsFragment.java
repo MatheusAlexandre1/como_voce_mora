@@ -15,7 +15,6 @@ import br.com.como_voce_mora.model.HouseGroupAnswer;
 import br.com.como_voce_mora.model.ResearchFlow;
 import br.com.como_voce_mora.ui.BaseFragment;
 import br.com.como_voce_mora.ui.aboutyou.AboutYouActivity;
-import br.com.como_voce_mora.ui.currentresidence.CurrentHomeFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -37,7 +36,6 @@ public class HabitationAspectsFragment extends BaseFragment {
     ImageView ivPhoto;
 
     private List<AnswerRequest> answerRequests = new ArrayList<>();
-    private boolean anyOptionChecked = false;
     HouseGroupAnswer satisfaction = HouseGroupAnswer.SATISFACTION_OF_HOME_ASPECTS;
     HouseGroupAnswer acessibilidade = HouseGroupAnswer.SATISFACTION_OF_HOME_ASPECTS;
     HouseGroupAnswer construction = HouseGroupAnswer.SATISFACTION_OF_HOME_ASPECTS;
@@ -79,25 +77,21 @@ public class HabitationAspectsFragment extends BaseFragment {
 
     private void initVolumes() {
         vhAcessibilidade.setListener(position -> {
-            anyOptionChecked = true;
             ivPhoto.setImageResource(R.drawable.accessibility);
             vhAcessibilidade.setInfo(texts.get(position));
             answerRequests.add(new AnswerRequest(acessibilidade.getQuestion(), acessibilidade.getQuestionPartId(), texts.get(position)));
         });
         vhAparencia.setListener(position -> {
-            anyOptionChecked = true;
             ivPhoto.setImageResource(R.drawable.appearance);
             vhAparencia.setInfo(texts.get(position));
             answerRequests.add(new AnswerRequest(construction.getQuestion(), construction.getQuestionPartId(), texts.get(position)));
         });
         vhConstrucao.setListener(position -> {
-            anyOptionChecked = true;
             ivPhoto.setImageResource(R.drawable.quality_construction);
             vhConstrucao.setInfo(texts.get(position));
             answerRequests.add(new AnswerRequest(general.getQuestion(), general.getQuestionPartId(), texts.get(position)));
         });
         vhLimpeza.setListener(position -> {
-            anyOptionChecked = true;
             ivPhoto.setImageResource(R.drawable.cleaning);
             vhLimpeza.setInfo(texts.get(position));
             answerRequests.add(new AnswerRequest(clean.getQuestion(), clean.getQuestionPartId(), texts.get(position)));
@@ -107,11 +101,9 @@ public class HabitationAspectsFragment extends BaseFragment {
 
     @OnClick(R.id.bt_next)
     public void onBtNextClicked() {
-        if (anyOptionChecked) {
-            if (getActivity() != null) {
-                setAnswers();
-                ((AboutYouActivity) getActivity()).addFragment(HabitationHowYouThinkAboutAspectsFragment.newInstance());
-            }
+        if (getActivity() != null) {
+            setAnswers();
+            ((AboutYouActivity) getActivity()).addFragment(HabitationHowYouThinkAboutAspectsFragment.newInstance());
         }
     }
 
@@ -125,13 +117,6 @@ public class HabitationAspectsFragment extends BaseFragment {
     private void setAnswers() {
         for (AnswerRequest r : answerRequests) {
             ResearchFlow.addAnswer(r, this);
-        }
-    }
-
-    @OnClick(R.id.btPreviousSession)
-    public void onBtPreviouSessionClicked() {
-        if (getActivity() != null) {
-            ((AboutYouActivity) requireActivity()).addFragment(CurrentHomeFragment.newInstance());
         }
     }
 }

@@ -1,7 +1,6 @@
 package br.com.como_voce_mora.ui.housegroup;
 
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ import br.com.como_voce_mora.model.HouseGroupAnswer;
 import br.com.como_voce_mora.model.ResearchFlow;
 import br.com.como_voce_mora.ui.BaseFragment;
 import br.com.como_voce_mora.ui.aboutyou.AboutYouActivity;
-import br.com.como_voce_mora.ui.currentresidence.CurrentHomeFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -33,8 +31,6 @@ public class HabitationHowYouThinkAboutAspectsFragment extends BaseFragment {
     VolumeHorizontal vhAparencia;
     @BindView(R.id.volume4)
     VolumeHorizontal vhLimpeza;
-    @BindView(R.id.ivImage)
-    ImageView ivPhoto;
 
     private List<AnswerRequest> answerRequests = new ArrayList<>();
     HouseGroupAnswer aspects = HouseGroupAnswer.ASPECTS;
@@ -43,7 +39,6 @@ public class HabitationHowYouThinkAboutAspectsFragment extends BaseFragment {
     HouseGroupAnswer aspectConvivence = HouseGroupAnswer.ASPECTS_CONVIVENCE;
     HouseGroupAnswer aspectPrivece = HouseGroupAnswer.ASPECTS_PRIVACY;
     private List<String> texts = new ArrayList<>();
-    private boolean anyOptionChecked = false;
 
     public static HabitationHowYouThinkAboutAspectsFragment newInstance() {
 
@@ -78,27 +73,19 @@ public class HabitationHowYouThinkAboutAspectsFragment extends BaseFragment {
 
     private void initVolumes() {
         vhAcessibilidade.setListener(position -> {
-            anyOptionChecked = true;
             vhAcessibilidade.setInfo(texts.get(position));
-            ivPhoto.setImageResource(R.drawable.cost_benefit);
             answerRequests.add(new AnswerRequest(aspectSecurity.getQuestion(), aspectSecurity.getQuestionPartId(), texts.get(position)));
         });
         vhAparencia.setListener(position -> {
-            anyOptionChecked = true;
             vhAparencia.setInfo(texts.get(position));
-            ivPhoto.setImageResource(R.drawable.security);
             answerRequests.add(new AnswerRequest(aspectStreet.getQuestion(), aspectStreet.getQuestionPartId(), texts.get(position)));
         });
         vhConstrucao.setListener(position -> {
-            anyOptionChecked = true;
             vhConstrucao.setInfo(texts.get(position));
-            ivPhoto.setImageResource(R.drawable.street_privacy);
             answerRequests.add(new AnswerRequest(aspectConvivence.getQuestion(), aspectConvivence.getQuestionPartId(), texts.get(position)));
         });
         vhLimpeza.setListener(position -> {
-            anyOptionChecked = true;
             vhLimpeza.setInfo(texts.get(position));
-            ivPhoto.setImageResource(R.drawable.coexistence);
             answerRequests.add(new AnswerRequest(aspectPrivece.getQuestion(), aspectPrivece.getQuestionPartId(), texts.get(position)));
         });
 
@@ -106,11 +93,9 @@ public class HabitationHowYouThinkAboutAspectsFragment extends BaseFragment {
 
     @OnClick(R.id.bt_next)
     public void onBtNextClicked() {
-        if (anyOptionChecked) {
-            if (getActivity() != null) {
-                setAnswers();
-                ((AboutYouActivity) getActivity()).addFragment(HabitationSatisfactionFragment.newInstance());
-            }
+        if (getActivity() != null) {
+            setAnswers();
+            ((AboutYouActivity) getActivity()).addFragment(HabitationSatisfactionFragment.newInstance());
         }
     }
 
@@ -124,13 +109,6 @@ public class HabitationHowYouThinkAboutAspectsFragment extends BaseFragment {
     public void onBtBackClicked() {
         if (getActivity() != null) {
             getActivity().onBackPressed();
-        }
-    }
-
-    @OnClick(R.id.btPreviousSession)
-    public void onBtPreviouSessionClicked() {
-        if (getActivity() != null) {
-            ((AboutYouActivity) requireActivity()).addFragment(CurrentHomeFragment.newInstance());
         }
     }
 }

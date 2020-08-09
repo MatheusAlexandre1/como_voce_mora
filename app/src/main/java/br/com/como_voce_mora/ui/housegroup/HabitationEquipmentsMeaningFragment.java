@@ -13,7 +13,6 @@ import br.com.como_voce_mora.custom.HowYouLiveProgressBar;
 import br.com.como_voce_mora.ui.BaseFragment;
 import br.com.como_voce_mora.ui.aboutyou.AboutYouActivity;
 import br.com.como_voce_mora.ui.building.BuildingFloorFragment;
-import br.com.como_voce_mora.ui.currentresidence.CurrentHomeFragment;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
@@ -28,8 +27,6 @@ public class HabitationEquipmentsMeaningFragment extends BaseFragment {
     List<Button> mButtons;
     @BindView(R.id.tv_question)
     TextView tvQuestion;
-
-    private boolean anyOptionChecked = false;
 
     public static HabitationEquipmentsMeaningFragment newInstance() {
 
@@ -61,10 +58,8 @@ public class HabitationEquipmentsMeaningFragment extends BaseFragment {
 
     @OnClick(R.id.bt_next)
     public void onBtNextClicked() {
-        if (anyOptionChecked) {
-            if (getActivity() != null) {
-                ((AboutYouActivity) getActivity()).addFragment(HabitationGreenAreaFragment.newInstance());
-            }
+        if (getActivity() != null) {
+            ((AboutYouActivity) getActivity()).addFragment(HabitationGreenAreaFragment.newInstance());
         }
     }
 
@@ -78,16 +73,9 @@ public class HabitationEquipmentsMeaningFragment extends BaseFragment {
     @OnClick({R.id.btFirstOption, R.id.btSecondOption, R.id.btThirdOption, R.id.btForthOption,
             R.id.btFifthOption, R.id.btSixOption, R.id.btSevenOption, R.id.btEightOption})
     public void onClickOptions(View view) {
-        anyOptionChecked = true;
         Button textView = (Button) view;
         customPodium.putOnPodium(textView.getText().toString());
         textView.setVisibility(View.INVISIBLE);
     }
 
-    @OnClick(R.id.btPreviousSession)
-    public void onBtPreviouSessionClicked() {
-        if (getActivity() != null) {
-            ((AboutYouActivity) requireActivity()).addFragment(CurrentHomeFragment.newInstance());
-        }
-    }
 }

@@ -1,21 +1,16 @@
 package br.com.como_voce_mora.ui.building;
 
 import android.view.View;
-import android.widget.TextView;
 
 import br.com.como_voce_mora.R;
 import br.com.como_voce_mora.custom.CustomSelectedView;
 import br.com.como_voce_mora.custom.HowYouLiveProgressBar;
-import br.com.como_voce_mora.model.UnityAnswer;
 import br.com.como_voce_mora.ui.BaseFragment;
 import br.com.como_voce_mora.ui.aboutyou.AboutYouActivity;
-import br.com.como_voce_mora.ui.unity.UnityAcquisitionFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class BuildingWhichDivisionFragment extends BaseFragment {
-    @BindView(R.id.tv_question)
-    TextView tvQuestion;
     @BindView(R.id.progress_bar)
     HowYouLiveProgressBar mProgress;
     @BindView(R.id.csvMuro)
@@ -27,8 +22,6 @@ public class BuildingWhichDivisionFragment extends BaseFragment {
     @BindView(R.id.csvNone)
     CustomSelectedView csvNone;
 
-    private UnityAnswer unityAnswer = UnityAnswer.NEIGHBORHOOD_DELIMITATION_TYPE;
-
 
     public static BuildingWhichDivisionFragment newInstance() {
         return new BuildingWhichDivisionFragment();
@@ -36,22 +29,21 @@ public class BuildingWhichDivisionFragment extends BaseFragment {
 
     @Override
     public void init() {
-        mProgress.setProgress(HowYouLiveProgressBar.HowYouLive.UNITY);
-        tvQuestion.setText(unityAnswer.getQuestion());
+        mProgress.setProgress(HowYouLiveProgressBar.HowYouLive.BUILDING);
     }
 
     @OnClick({R.id.csvViva, R.id.csvMuro, R.id.csvGrade, R.id.csvNone})
     public void onCheckedChanged(View view) {
         switch (view.getId()) {
             case R.id.csvViva:
-                csvMuro.setChecked(false);
-                csvViva.setChecked(true);
+                csvMuro.setChecked(true);
+                csvViva.setChecked(false);
                 csvGrade.setChecked(false);
                 csvNone.setChecked(false);
                 break;
             case R.id.csvMuro:
-                csvMuro.setChecked(true);
-                csvViva.setChecked(false);
+                csvMuro.setChecked(false);
+                csvViva.setChecked(true);
                 csvGrade.setChecked(false);
                 csvNone.setChecked(false);
                 break;
@@ -80,7 +72,7 @@ public class BuildingWhichDivisionFragment extends BaseFragment {
     @OnClick(R.id.bt_next)
     public void onBtNextClicked() {
         if (getActivity() != null) {
-            ((AboutYouActivity) getActivity()).addFragment(UnityAcquisitionFragment.newInstance());
+            ((AboutYouActivity) requireActivity()).addFragment(BuildingSplashFragment.newInstance());
         }
     }
 

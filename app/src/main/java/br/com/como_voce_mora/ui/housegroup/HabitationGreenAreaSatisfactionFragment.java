@@ -16,7 +16,6 @@ import br.com.como_voce_mora.ui.BaseFragment;
 import br.com.como_voce_mora.ui.aboutyou.AboutYouActivity;
 import br.com.como_voce_mora.ui.building.BuildingSplashFragment;
 import br.com.como_voce_mora.ui.building.BuildingWhichDivisionFragment;
-import br.com.como_voce_mora.ui.currentresidence.CurrentHomeFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -35,7 +34,6 @@ public class HabitationGreenAreaSatisfactionFragment extends BaseFragment implem
 
     private AnswerRequest answerRequest;
     private HouseGroupAnswer aboutYouAnswer = HouseGroupAnswer.GREEN_AREA_SATISFACTION;
-    private boolean anyOptionChecked = false;
 
     public static HabitationGreenAreaSatisfactionFragment newInstance() {
         return new HabitationGreenAreaSatisfactionFragment();
@@ -73,7 +71,6 @@ public class HabitationGreenAreaSatisfactionFragment extends BaseFragment implem
 
     @Override
     public void positionVolume(int position) {
-        anyOptionChecked = true;
         mIvAge.setImageResource(agesImage.get(position));
         mTvAge.setText(agesText.get(position));
         answerRequest = new AnswerRequest(aboutYouAnswer.getQuestion(), aboutYouAnswer.getQuestionPartId(), agesText.get(position));
@@ -82,8 +79,10 @@ public class HabitationGreenAreaSatisfactionFragment extends BaseFragment implem
 
     @OnClick(R.id.bt_next)
     public void onBtNextClicked() {
-        if (anyOptionChecked) {
-            ResearchFlow.addAnswer(answerRequest, this);
+        ResearchFlow.addAnswer(answerRequest, this);
+        if (ResearchFlow.getHouse()) {
+            ((AboutYouActivity) requireActivity()).addFragment(BuildingWhichDivisionFragment.newInstance());
+        } else {
             ((AboutYouActivity) requireActivity()).addFragment(BuildingSplashFragment.newInstance());
         }
     }
@@ -92,13 +91,6 @@ public class HabitationGreenAreaSatisfactionFragment extends BaseFragment implem
     public void onBtBackClicked() {
         if (getActivity() != null) {
             getActivity().onBackPressed();
-        }
-    }
-
-    @OnClick(R.id.btPreviousSession)
-    public void onBtPreviouSessionClicked() {
-        if (getActivity() != null) {
-            ((AboutYouActivity) requireActivity()).addFragment(CurrentHomeFragment.newInstance());
         }
     }
 }
